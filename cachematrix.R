@@ -7,13 +7,14 @@
 ##    mat_inv <- makeCacheMatrix()
 ##    mat_ex <- matrix(c(4,3,2,7,5,4,9,8,7),3,3)
 ##    mat_inv$set(mat_ex)
-##    cacheSolve(mat_ex)
-##  subsequent calls to cacheSolve will use the cache
+##    cacheSolve(mat_inv)
+##  subsequent calls to cacheSolve will use the cached value
 ## 
-## note this is per the assignment and not generic
+
+## this is written per the assignment and not generic
 ## see https://class.coursera.org/rprog-007/forum/thread?thread_id=380 
 ## and https://class.coursera.org/rprog-007/forum/thread?thread_id=713#post-3127
-## function commenting is per google guidelines:
+## function commenting below is per google guidelines:
 ##   https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#comments
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -44,6 +45,7 @@ cacheSolve <- function(x, ...) {
   # X must be the result of a previous call to makeCacheMatrix
   invm <- x$getinv()
   if(!is.null(invm)) {
+    # leave message in for assignment, would be removed before real use
     message("getting cached data")
     return(invm)
   }
